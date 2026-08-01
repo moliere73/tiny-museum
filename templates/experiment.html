@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="experiment">
+  <p class="kicker">Tiny experiment</p>
+  <div class="experiment-object" style="--object-color:{{ item.color }}">{{ item.emoji }}</div>
+  <p>For your <strong>{{ item.name }}</strong>:</p>
+  <h1>{{ prompt }}</h1>
+  <form method="post" action="{{ url_for('save_experiment') }}">
+    <input type="hidden" name="object_id" value="{{ item.id }}"><input type="hidden" name="prompt" value="{{ prompt }}">
+    <label>What did you notice? <span>optional</span><textarea name="observation" placeholder="One sentence is enough."></textarea></label>
+    <div class="actions"><button class="button" type="submit">Save experiment</button><a href="{{ url_for('surprise') }}">Try another</a></div>
+  </form>
+</section>
+{% endblock %}
+

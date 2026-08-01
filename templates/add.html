@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% block title %}Add object · Tiny Museum{% endblock %}
+{% block content %}
+<section class="page-head"><p class="kicker">New object</p><h1>Add a little thing.</h1><p>Only the name is required.</p></section>
+<form method="post" class="card form">
+  <div class="preview" id="preview" style="--preview-color:{{ form.get('color', '#F2C879') }}"><span id="preview-emoji">{{ form.get('emoji', '✨') }}</span></div>
+  <label>Name<input name="name" required value="{{ form.get('name', '') }}" placeholder="Blue mug"></label>
+  <div class="two"><label>Emoji<input name="emoji" maxlength="4" value="{{ form.get('emoji', '✨') }}" oninput="document.querySelector('#preview-emoji').textContent=this.value||'✨'"></label><label>Color<input name="color" type="color" value="{{ form.get('color', '#F2C879') }}" oninput="document.querySelector('#preview').style.setProperty('--preview-color',this.value)"></label></div>
+  <label>Memory <span>optional</span><textarea name="memory" placeholder="Why do you remember it?">{{ form.get('memory', '') }}</textarea></label>
+  <label>Where is it? <span>optional</span><input name="location" value="{{ form.get('location', '') }}" placeholder="Kitchen shelf"></label>
+  <button class="button" type="submit">Add to museum</button>
+</form>
+{% endblock %}
+

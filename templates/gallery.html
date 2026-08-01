@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <p class="kicker">A home for little things</p>
+  <h1>Ordinary objects.<br><i>Personal stories.</i></h1>
+  <p>Notice what you own, remember why it matters, and try tiny experiments.</p>
+</section>
+<div class="bar"><h2>Your collection</h2><span>{{ objects|length }} objects · {{ experiment_count }} experiments</span></div>
+<section class="gallery">
+{% for item in objects %}
+  <a class="object-card" href="{{ url_for('object_detail', object_id=item.id) }}" style="--object-color:{{ item.color }}">
+    <div class="emoji">{{ item.emoji }}</div>
+    <div><h3>{{ item.name }}</h3><p>{{ item.memory or 'No story yet.' }}</p>{% if item.location %}<span>{{ item.location }}</span>{% endif %}</div>
+  </a>
+{% else %}
+  <a class="empty" href="{{ url_for('add_object') }}"><span>＋</span><h3>Add your first object</h3><p>Start with something near you.</p></a>
+{% endfor %}
+</section>
+{% endblock %}
+

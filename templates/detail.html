@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="object-detail">
+  <div class="big-object" style="--object-color:{{ item.color }}">{{ item.emoji }}</div>
+  <div><p class="kicker">Object {{ item.id }}</p><h1>{{ item.name }}</h1><p class="memory">{{ item.memory or 'No story yet.' }}</p>{% if item.location %}<p class="location">Lives on: {{ item.location }}</p>{% endif %}<a class="button" href="{{ url_for('surprise') }}">Try an experiment</a></div>
+</section>
+{% if experiments %}<section class="notes"><div class="bar"><h2>Experiment notes</h2><span>{{ experiments|length }} saved</span></div>{% for experiment in experiments %}<article><p>{{ experiment.prompt }}</p><strong>{{ experiment.observation or 'Completed without a note.' }}</strong></article>{% endfor %}</section>{% endif %}
+{% endblock %}
+
