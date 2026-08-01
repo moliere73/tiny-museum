@@ -7,14 +7,21 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <header>
-    <a class="logo" href="{{ url_for('gallery') }}">Tiny Museum</a>
-    <nav><a href="{{ url_for('surprise') }}">Surprise me</a><a class="pill" href="{{ url_for('add_object') }}">Add object</a></nav>
-  </header>
-  <main>
-    {% for message in get_flashed_messages() %}<div class="flash">{{ message }}</div>{% endfor %}
-    {% block content %}{% endblock %}
-  </main>
+  <div class="museum-shell">
+    <aside>
+      <a class="logo" href="{{ url_for('gallery') }}"><span>tiny</span>MUSEUM</a>
+      <p class="side-note">A cabinet of everyday curiosities.</p>
+      <nav>
+        <a href="{{ url_for('gallery') }}"><b>01</b> Collection</a>
+        <a href="{{ url_for('surprise') }}"><b>02</b> Experiment</a>
+        <a href="{{ url_for('add_object') }}"><b>＋</b> Add object</a>
+      </nav>
+      <div class="open-sign">OPEN<br>FOR<br>NOTICING</div>
+    </aside>
+    <main>
+      {% for message in get_flashed_messages() %}<div class="flash">{{ message }}</div>{% endfor %}
+      {% block content %}{% endblock %}
+    </main>
+  </div>
 </body>
 </html>
-

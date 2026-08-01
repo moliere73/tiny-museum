@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 <section class="hero">
+  <div class="issue">ISSUE 001 · YOUR THINGS</div>
   <p class="kicker">A home for little things</p>
-  <h1>Ordinary objects.<br><i>Personal stories.</i></h1>
-  <p>Notice what you own, remember why it matters, and try tiny experiments.</p>
+  <h1>Look closer<br>at the <i>ordinary.</i></h1>
+  <p>Objects become exhibits. Memories become labels. Curiosity does the rest.</p>
 </section>
 <div class="bar"><h2>Your collection</h2><span>{{ objects|length }} objects · {{ experiment_count }} experiments</span></div>
 <section class="gallery">
@@ -17,4 +18,3 @@
 {% endfor %}
 </section>
 {% endblock %}
-
